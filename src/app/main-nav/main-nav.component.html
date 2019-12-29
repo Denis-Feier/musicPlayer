@@ -23,9 +23,15 @@
       <span style="padding: 10px">Music Player</span>
       <span class="spacer"></span>
       <img
-        src="https://image.shutterstock.com/z/stock-vector-default-avatar-profile-icon-grey-photo-placeholder-518740741.jpg"
+        *ngIf="!!this.userPic; else noPic"
+        [src]="this.userPic"
         alt="Avatar" class="avatar">
-      <button class="btn btn-primary" style="margin: 10px">Log Out</button>
+      <ng-template #noPic>
+        <img
+          [src]="'https://image.shutterstock.com/z/stock-vector-default-avatar-profile-icon-grey-photo-placeholder-518740741.jpg'"
+          alt="Avatar" class="avatar">
+      </ng-template>
+      <button class="btn btn-danger" style="margin: 10px" (click)="logout()">Log Out</button>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
