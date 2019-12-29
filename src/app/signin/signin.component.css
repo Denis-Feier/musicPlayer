@@ -1,7 +1,25 @@
-.signin-button{
-  position: absolute;
-  left: 50%;
+.background {
+  background-image: url('https://previews.dropbox.com/p/thumb/AAq0-8by_JHxyrcjacTcF40LCeGBcpDUYqqnQMcUnR4oYxwExpiDa4AOsASalVI7o7gT3CkI9ZvHiAb2xaK6lujFOfDLEkkBfHjYuzVeQoWjwp9JHP83-jeWQVnv6kBTh8zjnIHCKMmkTnYUYzZF46c65T2PBcpGcMYnCT_kOa9rTXHQJ9cgY15VH-FaX0TFLj8OtRjfWo8u5zCYsiOtugh2zO3pnP5ixRMtxe_22El8wNw2rQZIr87hsVgh3hPKlLsKLOeQmtxk74xK9cxfXg1P7jAEKlRmgH00PPqRVhnSDO7Vrk95RTsm4NFJ-ZJ7fFGpdrSnfMm25lOcqjd2t3B9GRabm3rfok8Q__1FOSU29N5gbxxo5TCX7dUkkCxGZ46FpS79S7pr_9TbEtIeULGcRQTWP5gVUKapYHj8w_70S1VxucH8zXkx2x1H37kS40SfIpKRybdMorFUEKyQSlk1Cj9MlaD3TNwf61PZO7F57Q/p.jpeg?fv_content=true&size_mode=5');
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
-p{
-  margin-left: 47%;
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 60vh;
+}
+
+.logo {
+  float: left;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.mat-card-header {
+  background-color: #3122ff;
 }
