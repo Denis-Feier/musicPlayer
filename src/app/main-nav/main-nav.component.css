@@ -30,3 +30,7 @@
 .highlight-div{
   background-color: rgb(16,16,16);
 }
+
+.get-some-space {
+  margin: 15px;
+}

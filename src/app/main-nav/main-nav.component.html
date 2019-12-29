@@ -1,4 +1,4 @@
-<div *ngIf="authService.user$ | async; else login">
+<div *ngIf="authService.user$ | async as user; else login">
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport
                  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
@@ -35,16 +35,19 @@
         </button>
         <span style="padding: 10px">Music Player</span>
         <span class="spacer"></span>
+        <div class="get-some-space solid-border">
+          <strong id="name">{{user.displayName}}</strong>
+        </div>
         <img
-          *ngIf="!!this.userPic; else noPic"
-          [src]="this.userPic"
+          *ngIf="!!user.photoURL; else noPic"
+          [src]="user.photoURL"
           alt="Avatar" class="avatar">
         <ng-template #noPic>
           <img
             [src]="'https://image.shutterstock.com/z/stock-vector-default-avatar-profile-icon-grey-photo-placeholder-518740741.jpg'"
             alt="Avatar" class="avatar">
         </ng-template>
-        <button class="btn btn-danger" style="margin: 10px" (click)="logout()">Log Out</button>
+        <button class="btn btn-danger get-some-space" (click)="logout()">Log Out</button>
       </mat-toolbar>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
