@@ -26,3 +26,7 @@
   height: 50px;
   border-radius: 50%;
 }
+
+.highlight-div{
+  background-color: rgb(16,16,16);
+}

@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {Observable, Subscription} from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import {AuthService} from '../services/auth.service';
+import {SigninComponent} from '../signin/signin.component';
 
 @Component({
   selector: 'app-main-nav',
@@ -21,7 +22,7 @@ export class MainNavComponent implements OnInit, OnDestroy {
 
   authServiceSubscription: Subscription;
 
-  constructor(private authService: AuthService, private breakpointObserver: BreakpointObserver) {}
+  constructor(public authService: AuthService, private breakpointObserver: BreakpointObserver) {}
 
   logout() {
     this.authService.signOut();

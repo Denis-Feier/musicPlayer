@@ -18,17 +18,24 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AuthService} from './services/auth.service';
+import { HomePageComponent } from './home-page/home-page.component';
+import { AccountPageComponent } from './account-page/account-page.component';
+import { MusicPageComponent } from './music-page/music-page.component';
 
 const appRoutes: Routes = [
-  {path: '', component: SigninComponent},
-  {path: 'main', component: MainNavComponent}
+  { path: '', component: HomePageComponent },
+  { path: 'account', component: AccountPageComponent },
+  { path: 'music', component: MusicPageComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
-    SigninComponent
+    SigninComponent,
+    HomePageComponent,
+    AccountPageComponent,
+    MusicPageComponent
   ],
   imports: [
     BrowserModule,
