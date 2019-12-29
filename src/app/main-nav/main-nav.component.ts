@@ -11,23 +11,29 @@ import {AuthService} from '../services/auth.service';
 })
 export class MainNavComponent implements OnInit, OnDestroy {
 
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
   userPic: string | undefined;
 
   authServiceSubscription: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private breakpointObserver: BreakpointObserver) {}
 
   logout() {
     this.authService.signOut();
+  }
+
+  ngOnDestroy(): void {
+    this.authServiceSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
     this.authServiceSubscription = this.authService.user$.subscribe( user => {
       this.userPic = user.photoURL;
     });
-  }
-
-  ngOnDestroy(): void {
-    this.authServiceSubscription.unsubscribe();
   }
 }
