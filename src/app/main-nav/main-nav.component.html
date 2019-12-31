@@ -1,4 +1,4 @@
-<div *ngIf="authService.user$ | async as user; else login">
+<!--<div *ngIf="authService.user$ | async as user; else login">
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport
                  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
@@ -55,4 +55,6 @@
 </div>
 <ng-template #login>
   <app-signin></app-signin>
-</ng-template>
+</ng-template>-->
+<h1>hello</h1>
+<ng-users-table></ng-users-table>//ar trebui sa-mi afiseze un tabel cu continut random

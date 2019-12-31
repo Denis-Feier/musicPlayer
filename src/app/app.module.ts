@@ -21,6 +21,12 @@ import {AuthService} from './services/auth.service';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { MusicPageComponent } from './music-page/music-page.component';
+import { UsersTableComponent } from './users-table/users-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { SongsTableComponent } from './songs-table/songs-table.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -35,7 +41,10 @@ const appRoutes: Routes = [
     SigninComponent,
     HomePageComponent,
     AccountPageComponent,
-    MusicPageComponent
+    MusicPageComponent,
+    UsersTableComponent,
+    SongsTableComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +60,10 @@ const appRoutes: Routes = [
     AngularFireStorageModule,
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
