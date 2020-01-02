@@ -21,6 +21,8 @@ import {AuthService} from './services/auth.service';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { MusicPageComponent } from './music-page/music-page.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { NameFilterPipe } from './name-filter.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -35,7 +37,9 @@ const appRoutes: Routes = [
     SigninComponent,
     HomePageComponent,
     AccountPageComponent,
-    MusicPageComponent
+    MusicPageComponent,
+    AdminPageComponent,
+    NameFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,46 @@
+
+<div class="container">
+  <div class="search-bar">
+    <label>
+      <input class="form-control" type="text" placeholder="Search" [(ngModel)]="searchText">
+    </label>
+  </div>
+  <div class="list-group">
+    <div *ngFor="let user of this.users | nameFilter: {displayName: searchText}; let i=index;">
+      <a class="list-group-item list-group-item-action listItem"
+         *ngIf="user.uid !== this.currentUser.uid"
+      >
+        <img class="avatar" [src]="user.photoURL">
+        <div class="list-content">
+          <strong>ID: </strong><span>{{user.uid}}</span>
+          <div>
+        <span>
+          <strong>Name: </strong>{{user.displayName}}
+        </span>
+            <span class="button-content">
+          <button class="btn btn-danger" style="margin-right: 10px;">Block</button>
+          <button class="btn btn-success">View</button>
+        </span>
+          </div>
+          <span><strong>Email: </strong> {{user.email}}</span>
+        </div>
+      </a>
+    </div>
+  </div>
+  <hr style="background-color: aliceblue">
+  <div class="border border-dark">
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" id="songTitle" placeholder="Song">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="songArtist" placeholder="Artist">
+      </div>
+      <div class="custom-file">
+        <label class="custom-file-label" for="customFile">File name</label>
+        <input type="file" class="custom-file-input" id="customFile">
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-top: 10px">Submit</button>
+    </form>
+  </div>
+</div>

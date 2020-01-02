@@ -1,0 +1,23 @@
+.list-group{
+  max-height: 300px;
+  overflow: auto;
+}
+
+.avatar {
+  float: left;
+  width: 80px;
+  height: 80px;
+  padding-right: 15px;
+}
+
+.button-content {
+  float: right;
+}
+
+.list-content {
+  color: black;
+}
+
+.container {
+  margin-top: 10px;
+}
