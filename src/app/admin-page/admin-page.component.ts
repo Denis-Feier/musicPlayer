@@ -65,4 +65,16 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   onFileChange(event) {
     this.songInput = event.target.files;
   }
+
+  blockUser(user: User) {
+    console.log('Block user: ');
+    console.log(user);
+    this.usersService.block(user);
+  }
+
+  unBlockUser(user: User) {
+    console.log('Unblock user: ');
+    console.log(user);
+    this.usersService.unBlock(user);
+  }
 }

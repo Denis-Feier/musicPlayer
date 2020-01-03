@@ -25,5 +25,25 @@ export class UsersService {
     );
   }
 
+  block(user: User) {
+    const newUser: User = {
+      uid: user.uid,
+      role: 'banned',
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      email: user.email
+    };
+    this.afs.doc(`users/${user.uid}`).update(newUser);
+  }
 
+  unBlock(user: User) {
+    const newUser: User = {
+      uid: user.uid,
+      role: 'user',
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      email: user.email
+    };
+    this.afs.doc(`users/${user.uid}`).update(newUser);
+  }
 }

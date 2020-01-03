@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class NameFilterPipe implements PipeTransform {
 
-  transform(items: any, filter: any, defaultFilter: boolean): any {
+  transform(items: any, filter: any, defaultFilter = true): any {
     if (!filter) {
       return items;
     }

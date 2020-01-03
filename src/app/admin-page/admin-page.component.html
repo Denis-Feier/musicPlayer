@@ -17,7 +17,11 @@
           <strong>Name: </strong>{{user.displayName}}
         </span>
             <span class="button-content">
-          <button class="btn btn-danger" style="margin-right: 10px;">Block</button>
+          <button class="btn btn-danger" style="margin-right: 10px;"
+                  *ngIf="user.role !== 'banned';else unBan" (click)="blockUser(user)">Block</button>
+              <ng-template #unBan>
+                <button class="btn btn-primary" style="margin-right: 10px;" (click)="unBlockUser(user)">Unblock</button>
+              </ng-template>
           <button class="btn btn-success">View</button>
         </span>
           </div>
@@ -33,16 +37,19 @@
         <label>Title: <input type="text" class="form-control" formControlName="titleSong"></label>
       </div>
       <div class="form-group">
-        <label >Artist: <input type="text" class="form-control" formControlName="artistSong"> </label>
+        <label>Artist: <input type="text" class="form-control" formControlName="artistSong"> </label>
       </div>
       <div class="custom-file">
         <ng-template #nullInput>File name</ng-template>
         <label class="custom-file-label" for="customFile">
           <span *ngIf="!!songInput; else nullInput">{{this.songInput[0].name}} </span>
         </label>
-        <input type="file" class="custom-file-input" id="customFile" formControlName="dataSong" (change)="onFileChange($event)">
+        <input type="file" class="custom-file-input" id="customFile" formControlName="dataSong"
+               (change)="onFileChange($event)">
       </div>
-      <button type="submit" class="btn btn-primary" style="margin-top: 10px" [disabled]="!this.addSongForm.valid">Submit</button>
+      <button type="submit" class="btn btn-primary" style="margin-top: 10px" [disabled]="!this.addSongForm.valid">
+        Submit
+      </button>
     </form>
   </div>
 </div>
