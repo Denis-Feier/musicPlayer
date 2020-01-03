@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="search-bar">
     <label>
@@ -29,18 +28,27 @@
   </div>
   <hr style="background-color: aliceblue">
   <div class="border border-dark">
-    <form>
+    <form [formGroup]="addSongForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <input type="text" class="form-control" id="songTitle" placeholder="Song">
+        <input type="text" class="form-control" formControlName="titleSong">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="songArtist" placeholder="Artist">
+        <input type="text" class="form-control" formControlName="artistSong">
       </div>
       <div class="custom-file">
-        <label class="custom-file-label" for="customFile">File name</label>
-        <input type="file" class="custom-file-input" id="customFile">
+        <ng-template #nullInput>File name</ng-template>
+        <label class="custom-file-label" for="customFile">
+          <span *ngIf="!!songInput; else nullInput">{{this.songInput[0].name}} </span>
+        </label>
+        <input type="file" class="custom-file-input" id="customFile" formControlName="dataSong" (change)="onFileChange($event)">
       </div>
-      <button type="submit" class="btn btn-primary" style="margin-top: 10px">Submit</button>
+      <button type="submit" class="btn btn-primary" style="margin-top: 10px" [disabled]="!this.addSongForm.valid">Submit</button>
     </form>
+    <div *ngIf="updated">
+      <hr>
+      <div class="alert alert-success" role="alert">
+        Done!
+      </div>
+    </div>
   </div>
 </div>

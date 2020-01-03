@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { SigninComponent } from './signin/signin.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {environment} from '../environments/environment.prod';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
@@ -28,6 +28,7 @@ const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'account', component: AccountPageComponent },
   { path: 'music', component: MusicPageComponent },
+  { path: 'admin', component: AdminPageComponent}
 ];
 
 @NgModule({
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
     AngularFireStorageModule,
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
