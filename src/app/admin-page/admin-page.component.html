@@ -30,10 +30,10 @@
   <div class="border border-dark">
     <form [formGroup]="addSongForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <input type="text" class="form-control" formControlName="titleSong">
+        <label>Title: <input type="text" class="form-control" formControlName="titleSong"></label>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" formControlName="artistSong">
+        <label >Artist: <input type="text" class="form-control" formControlName="artistSong"> </label>
       </div>
       <div class="custom-file">
         <ng-template #nullInput>File name</ng-template>
@@ -44,11 +44,5 @@
       </div>
       <button type="submit" class="btn btn-primary" style="margin-top: 10px" [disabled]="!this.addSongForm.valid">Submit</button>
     </form>
-    <div *ngIf="updated">
-      <hr>
-      <div class="alert alert-success" role="alert">
-        Done!
-      </div>
-    </div>
   </div>
 </div>

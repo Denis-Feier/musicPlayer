@@ -4,11 +4,12 @@ import {Subscription} from 'rxjs';
 import {User} from '../shared/user.model';
 import {AuthService} from '../services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UploadMusicService} from '../services/upload-music.service';
 
 @Component({
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.css']
+  styleUrls: ['./admin-page.component.css'],
 })
 export class AdminPageComponent implements OnInit, OnDestroy {
 
@@ -17,7 +18,6 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   users: User[];
   currentUser: User;
   searchText: string;
-  updated = false;
   songInput: any;
   addSongForm = new FormGroup({
     titleSong: new FormControl('', Validators.required),
@@ -25,7 +25,10 @@ export class AdminPageComponent implements OnInit, OnDestroy {
     dataSong: new FormControl('', Validators.required),
   });
 
-  constructor(private usersService: UsersService, private authService: AuthService) {
+  constructor(
+    private usersService: UsersService,
+    private authService: AuthService,
+    private uploadMusicService: UploadMusicService) {
   }
 
   ngOnInit() {
@@ -43,8 +46,19 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.addSongForm.value);
-    console.log(this.songInput.item(0));
+    // console.log(this.addSongForm.value);
+    // console.log(this.addSongForm.get('titleSong').value);
+    // console.log(this.addSongForm.get('artistSong').value);
+    // console.log(this.songInput.item(0)); // this is for upload
+    this.uploadMusicService.uploadSong(
+      {
+        name: this.addSongForm.get('titleSong').value,
+        artist: this.addSongForm.get('artistSong').value,
+        file: this.songInput.item(0)
+      });
+    this.addSongForm.get('titleSong').setValue(undefined);
+    this.addSongForm.get('artistSong').setValue(undefined);
+    this.addSongForm.get('dataSong').setValue(undefined);
   }
 
   onFileChange(event) {

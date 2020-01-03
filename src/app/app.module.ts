@@ -23,6 +23,7 @@ import { AccountPageComponent } from './account-page/account-page.component';
 import { MusicPageComponent } from './music-page/music-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { NameFilterPipe } from './name-filter.pipe';
+import {UploadMusicService} from './services/upload-music.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -59,7 +60,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, UploadMusicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
