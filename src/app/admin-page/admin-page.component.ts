@@ -59,6 +59,7 @@ export class AdminPageComponent implements OnInit, OnDestroy {
     this.addSongForm.get('titleSong').setValue(undefined);
     this.addSongForm.get('artistSong').setValue(undefined);
     this.addSongForm.get('dataSong').setValue(undefined);
+    this.songInput = undefined;
   }
 
   onFileChange(event) {
