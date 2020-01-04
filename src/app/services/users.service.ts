@@ -19,9 +19,9 @@ export class UsersService {
     this.users = this.taskCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as User;
-        const id = a.payload.doc.id;
-        return {id, ...data};
-      }))
+        const uid = a.payload.doc.id;
+        return {uid, ...data};
+      })),
     );
   }
 

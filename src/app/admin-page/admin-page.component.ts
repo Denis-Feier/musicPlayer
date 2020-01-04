@@ -43,6 +43,7 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.usersServiceSubscription.unsubscribe();
     this.authServiceSubscription.unsubscribe();
+    this.users = null;
   }
 
   onSubmit() {
