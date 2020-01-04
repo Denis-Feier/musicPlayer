@@ -5,6 +5,7 @@ import {User} from '../shared/user.model';
 import {AuthService} from '../services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UploadMusicService} from '../services/upload-music.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-page',
@@ -28,7 +29,8 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
-    private uploadMusicService: UploadMusicService) {
+    private uploadMusicService: UploadMusicService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -77,5 +79,9 @@ export class AdminPageComponent implements OnInit, OnDestroy {
     console.log('Unblock user: ');
     console.log(user);
     this.usersService.unBlock(user);
+  }
+
+  viewProfile(uid: string) {
+    this.router.navigate(['/account', uid]);
   }
 }

@@ -29,7 +29,7 @@ import { BrowserPageComponent } from './browser-page/browser-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
-  { path: 'account', component: AccountPageComponent },
+  { path: 'account/:uid', component: AccountPageComponent },
   { path: 'music', component: MusicPageComponent },
   { path: 'admin', component: AdminPageComponent},
   { path: 'browse', component: BrowserPageComponent}

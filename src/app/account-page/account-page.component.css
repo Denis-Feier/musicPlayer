@@ -1,0 +1,27 @@
+body{
+  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+.emp-profile{
+  padding: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border-radius: 0.5rem;
+  background: #767676;
+}
+.profile-img{
+  text-align: center;
+}
+.profile-img img{
+  width: 70%;
+  height: 100%;
+}
+
+.profile-edit-btn{
+  border: none;
+  border-radius: 1.5rem;
+  width: 70%;
+  font-weight: 600;
+  color: #6c757d;
+  cursor: pointer;
+}
+
