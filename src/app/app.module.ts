@@ -23,7 +23,8 @@ import { AccountPageComponent } from './account-page/account-page.component';
 import { MusicPageComponent } from './music-page/music-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { NameFilterPipe } from './name-filter.pipe';
-import {UploadMusicService} from './services/upload-music.service';
+import {UploadMusicService} from './services/upload-music.service';;
+import { BannedPageComponent } from './banned-page/banned-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     AccountPageComponent,
     MusicPageComponent,
     AdminPageComponent,
-    NameFilterPipe
+    NameFilterPipe,
+    BannedPageComponent
   ],
   imports: [
     BrowserModule,

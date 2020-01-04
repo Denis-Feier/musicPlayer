@@ -1,0 +1,37 @@
+<mat-toolbar class="mat-card-header">
+  <img src='https://firebasestorage.googleapis.com/v0/b/music-player-70e28.appspot.com/o/images%2Flogo.jpg?alt=media&token=27faa635-067f-44fc-a63a-89021d9a767a'
+       alt="logo" class="logo">
+  <strong style="margin-left: 8px">Music Player</strong>
+  <span class="spacer"></span>
+  <div class="get-some-space solid-border">
+    <strong id="name">{{user.displayName}}</strong>
+  </div>
+  <img
+    *ngIf="!!user.photoURL; else noPic"
+    [src]="user.photoURL"
+    alt="Avatar" class="avatar">
+  <ng-template #noPic>
+    <img
+      [src]="'https://image.shutterstock.com/z/stock-vector-default-avatar-profile-icon-grey-photo-placeholder-518740741.jpg'"
+      alt="Avatar" class="avatar">
+  </ng-template>
+  <button class="btn btn-danger get-some-space" (click)="logout()">Log Out</button>
+</mat-toolbar>
+<div class="body">
+  <img
+    class="bg-image"
+    [src]="'https://firebasestorage.googleapis.com/v0/b/music-player-70e28.appspot.com/o/images%2Fimg.jpg?alt=media&token=3b28710b-c197-4e54-975c-cda6b6495604'"
+  >
+  <div class="bg-text">
+    <img
+      [src]="'https://firebasestorage.googleapis.com/v0/b/music-player-70e28.appspot.com/o/images%2Fx-mark-3-64.png?alt=media&token=ca637a0e-caa9-424e-b25d-2e238f3150d0'"
+      style="width: 65px; height: 65px;">
+    <h1>Account disabled!</h1>
+    <h2>Your account (account name here) has been disabled.</h2>
+    <h3>We noticed that you haven't been using your account for a while, which is why we deactivated it until you want
+      to
+      return.</h3>
+    <h3>To reactivate your account, please contact the site administrator at the address below.</h3>
+    <h3>Contact: admin@gmail.com</h3>
+  </div>
+</div>
