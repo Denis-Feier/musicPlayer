@@ -25,12 +25,14 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { NameFilterPipe } from './name-filter.pipe';
 import {UploadMusicService} from './services/upload-music.service';;
 import { BannedPageComponent } from './banned-page/banned-page.component';
+import { BrowserPageComponent } from './browser-page/browser-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'account', component: AccountPageComponent },
   { path: 'music', component: MusicPageComponent },
-  { path: 'admin', component: AdminPageComponent}
+  { path: 'admin', component: AdminPageComponent},
+  { path: 'browse', component: BrowserPageComponent}
 ];
 
 @NgModule({
@@ -43,7 +45,8 @@ const appRoutes: Routes = [
     MusicPageComponent,
     AdminPageComponent,
     NameFilterPipe,
-    BannedPageComponent
+    BannedPageComponent,
+    BrowserPageComponent
   ],
   imports: [
     BrowserModule,
