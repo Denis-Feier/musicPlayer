@@ -19,7 +19,7 @@ export class BrowserPageComponent implements OnInit , OnDestroy {
 
   playSong(song: Song) {
     this.selectedSong = song;
-    console.log(this.selectedSong)
+    console.log(this.selectedSong);
   }
 
   ngOnInit() {

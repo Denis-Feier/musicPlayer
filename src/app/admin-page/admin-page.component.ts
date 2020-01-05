@@ -45,7 +45,7 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.usersServiceSubscription.unsubscribe();
     this.authServiceSubscription.unsubscribe();
-    this.users = null;
+    this.users.splice(0, this.users.length);
   }
 
   onSubmit() {
@@ -83,5 +83,6 @@ export class AdminPageComponent implements OnInit, OnDestroy {
 
   viewProfile(uid: string) {
     this.router.navigate(['/account', uid]);
+    this.users.splice(0, this.users.length);
   }
 }

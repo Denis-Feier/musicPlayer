@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="search-bar">
+    <label>
+      <input class="form-control" type="text" placeholder="Search" [(ngModel)]="searchText">
+    </label>
+  </div>
+  <div class="list-group">
+    <div *ngFor="let user of this.users | nameFilter: {displayName: searchText}; let i=index;">
+      <a class="list-group-item list-group-item-action listItem"
+         *ngIf="user.uid !== this.currentUser.uid"
+      >
+        <div class="list-content">
+          <span>
+            <strong>Name: </strong>{{user.displayName}}
+          </span>
+          <img class="avatar" [src]="user.photoURL">
+          <span class="button-content">
+            <button class="btn btn-success" (click)="viewProfile(user.uid)">View Profile</button>
+          </span>
+          <p>
+            <strong>Email: </strong> {{user.email}}
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

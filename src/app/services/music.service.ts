@@ -4,9 +4,7 @@ import {Song} from '../shared/song.model';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {map} from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MusicService {
 
   songs: Observable<Song[]>;

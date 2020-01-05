@@ -20,17 +20,19 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AuthService} from './services/auth.service';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AccountPageComponent } from './account-page/account-page.component';
-import { MusicPageComponent } from './music-page/music-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { NameFilterPipe } from './name-filter.pipe';
 import {UploadMusicService} from './services/upload-music.service';
 import { BannedPageComponent } from './banned-page/banned-page.component';
 import { BrowserPageComponent } from './browser-page/browser-page.component';
+import { PeoplePageComponent } from './people-page/people-page.component';
+import {UsersService} from './services/users.service';
+import {MusicService} from './services/music.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'account/:uid', component: AccountPageComponent },
-  { path: 'music', component: MusicPageComponent },
+  { path: 'people', component: PeoplePageComponent },
   { path: 'admin', component: AdminPageComponent},
   { path: 'browse', component: BrowserPageComponent}
 ];
@@ -42,11 +44,11 @@ const appRoutes: Routes = [
     SigninComponent,
     HomePageComponent,
     AccountPageComponent,
-    MusicPageComponent,
     AdminPageComponent,
     NameFilterPipe,
     BannedPageComponent,
-    BrowserPageComponent
+    BrowserPageComponent,
+    PeoplePageComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService, UploadMusicService],
+  providers: [AuthService, UploadMusicService, UsersService, MusicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
