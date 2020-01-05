@@ -23,7 +23,7 @@ import { AccountPageComponent } from './account-page/account-page.component';
 import { MusicPageComponent } from './music-page/music-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { NameFilterPipe } from './name-filter.pipe';
-import {UploadMusicService} from './services/upload-music.service';;
+import {UploadMusicService} from './services/upload-music.service';
 import { BannedPageComponent } from './banned-page/banned-page.component';
 import { BrowserPageComponent } from './browser-page/browser-page.component';
 
@@ -63,7 +63,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [AuthService, UploadMusicService],
   bootstrap: [AppComponent]

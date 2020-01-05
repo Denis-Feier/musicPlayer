@@ -1,8 +1,48 @@
 <div class="container">
   <div class="row">
-
+    <div class="col">
+      <div class="search-bar">
+        <input class="input100" type="text" name="name" placeholder="Search Music" [(ngModel)]="searchText">
+      </div>
+    </div>
   </div>
+  <hr>
   <div class="row">
-
+    <div class="col">
+      <div *ngIf="selectedSong; else noSong" class="search-bar">
+        <audio [src]="selectedSong.songURL"
+               controls
+               autoplay
+               controlsList="nodownload"
+               (ended)="songEnded($event)"
+        ></audio>
+      </div>
+      <ng-template #noSong>
+        <div class="search-bar">
+          <audio disabled controls></audio>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <hr>
+</div>
+<div class="container">
+  <div class="list-group">
+    <div *ngFor="let song of this.songs | nameFilter: {name: searchText}; let i=index;">
+      <a class="list-group-item list-group-item-action listItem">
+        <div class="list-content">
+          <span class="button-content">
+                <button class="btn btn-primary" style="margin-right: 10px;" (click)="playSong(song)">Play</button>
+                <button class="btn btn-success">Add To PlayList</button>
+              </span>
+          <strong>Title: </strong><span>{{song.name}}</span>
+          <div>
+            <span>
+                <strong>Artist: </strong>{{song.artist}}
+              </span>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 </div>

@@ -13,11 +13,13 @@ export class BrowserPageComponent implements OnInit , OnDestroy {
   songs: Song[];
   musicServiceSubscription: Subscription;
   selectedSong: Song;
+  searchText: string;
 
   constructor(private musicService: MusicService) { }
 
   playSong(song: Song) {
     this.selectedSong = song;
+    console.log(this.selectedSong)
   }
 
   ngOnInit() {
@@ -32,4 +34,7 @@ export class BrowserPageComponent implements OnInit , OnDestroy {
     this.musicServiceSubscription.unsubscribe();
   }
 
+  songEnded($event: Event) {
+    console.log($event);
+  }
 }
