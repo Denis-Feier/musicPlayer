@@ -1,0 +1,41 @@
+<hr>
+<div class="row">
+  <div class="col">
+    <div *ngIf="selectedSong; else noSong" class="search-bar">
+      <audio [src]="selectedSong.songURL"
+             controls
+             autoplay
+             controlsList="nodownload"
+             (ended)="songEnded($event)"
+      ></audio>
+    </div>
+    <ng-template #noSong>
+      <div class="search-bar">
+        <audio disabled controls></audio>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<hr>
+
+<div class="container">
+  <div class="list-group">
+    <div *ngFor="let song of this.songs; let i=index;">
+      <a class="list-group-item list-group-item-action listItem"
+         [ngClass]="{'selectedSong': i === this.songIndex}"
+      >
+        <div class="list-content">
+          <span class="button-content">
+                <button (click)="playSong(song, i)" class="btn btn-primary" style="margin-right: 10px;">Play</button>
+              </span>
+          <strong>Title: </strong><span>{{song.name}}</span>
+          <div>
+            <span>
+                <strong>Artist: </strong>{{song.artist}}
+              </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

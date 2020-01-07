@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MusicService} from '../services/music.service';
 import {Song} from '../shared/song.model';
 import {Subscription} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-browser-page',
@@ -14,8 +15,11 @@ export class BrowserPageComponent implements OnInit , OnDestroy {
   musicServiceSubscription: Subscription;
   selectedSong: Song;
   searchText: string;
-
-  constructor(private musicService: MusicService) { }
+  selectedToAdd: string;
+  constructor(private musicService: MusicService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute
+  ) { }
 
   playSong(song: Song) {
     this.selectedSong = song;
@@ -36,5 +40,10 @@ export class BrowserPageComponent implements OnInit , OnDestroy {
 
   songEnded($event: Event) {
     console.log($event);
+  }
+
+  addThisSong(song: Song) {
+    this.selectedToAdd = song.sid;
+    this.router.navigate( ['addToPlayList', `${song.sid}`],{relativeTo: this.activatedRoute} );
   }
 }

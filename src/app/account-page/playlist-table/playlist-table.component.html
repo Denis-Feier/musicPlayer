@@ -14,8 +14,7 @@
         >
           <div class="list-content">
           <span class="button-content" *ngIf="this.uid===this.currentUser.uid; else notMayPlayList">
-                <button class="btn btn-primary" style="margin-right: 10px;">Play</button>
-                <button class="btn btn-success">Edit</button>
+                <button class="btn btn-primary" (click)="playThisPlayList(playLists)">Play</button>
                 <button class="btn btn-danger" style="margin-left: 10px;" (click)="onDelete(playLists)">Delete</button>
               </span>
             <ng-template #notMayPlayList>

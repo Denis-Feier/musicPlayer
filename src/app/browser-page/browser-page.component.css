@@ -31,3 +31,7 @@
   font-size: 18px;
   color: #8f8fa1;
 }
+
+.selectedSong {
+  background-color: powderblue;
+}

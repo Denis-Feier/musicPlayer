@@ -1,3 +1,5 @@
+<router-outlet></router-outlet>
+
 <div class="container">
   <div class="row">
     <div class="col">
@@ -29,11 +31,13 @@
 <div class="container">
   <div class="list-group">
     <div *ngFor="let song of this.songs | nameFilter: {name: searchText}; let i=index;">
-      <a class="list-group-item list-group-item-action listItem">
+      <a class="list-group-item list-group-item-action listItem"
+         [ngClass]="{'selectedSong': selectedToAdd === song.sid}"
+      >
         <div class="list-content">
           <span class="button-content">
                 <button class="btn btn-primary" style="margin-right: 10px;" (click)="playSong(song)">Play</button>
-                <button class="btn btn-success">Add To PlayList</button>
+                <button class="btn btn-success" (click)="addThisSong(song)">Add To PlayList</button>
               </span>
           <strong>Title: </strong><span>{{song.name}}</span>
           <div>

@@ -1,0 +1,35 @@
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="search-bar">
+      <input class="input100" type="text" name="name" placeholder="Search Playlist" [(ngModel)]="searchText">
+    </div>
+    <div class="container">
+      <hr>
+      <div class="list-group">
+        <div *ngFor="let playLists of this.myPlayLists | nameFilter: {title: searchText}; let i=index;">
+          <a
+            class="list-group-item list-group-item-action listItem"
+            [ngClass]="{'privatePlayList': playLists.privatePolicy}"
+          >
+            <div class="list-content">
+          <span class="button-content">
+                <button class="btn btn-danger" style="margin-left: 10px;"
+                        (click)="addToThisPlayList(playLists)">Add</button>
+              </span>
+              <strong>Title: </strong><span>{{playLists.title}}</span>
+
+                <div>Add: {{this.addInPlayList.get(playLists.pid)}} new Songs</div>
+
+            <span>
+                <strong>Description: </strong>{{playLists.description}}
+              </span>
+
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>

@@ -29,16 +29,21 @@ import { PeoplePageComponent } from './people-page/people-page.component';
 import {MusicService} from './services/music.service';
 import { PlaylistTableComponent } from './account-page/playlist-table/playlist-table.component';
 import { CreatePlayListComponent } from './account-page/create-play-list/create-play-list.component';
+import { AddToPlayListComponent } from './browser-page/add-to-play-list/add-to-play-list.component';
+import { PlayYourPlayListComponent } from './account-page/play-your-play-list/play-your-play-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'account/:uid', component: AccountPageComponent, children:[
       {path: '', component: PlaylistTableComponent},
       {path: 'create', component: CreatePlayListComponent},
+      {path: 'play/:pid', component: PlayYourPlayListComponent},
     ]},
   { path: 'people', component: PeoplePageComponent },
   { path: 'admin', component: AdminPageComponent},
-  { path: 'browse', component: BrowserPageComponent}
+  { path: 'browse', component: BrowserPageComponent, children:[
+      {path: 'addToPlayList/:sid', component: AddToPlayListComponent}
+    ]}
 ];
 
 @NgModule({
@@ -54,7 +59,9 @@ const appRoutes: Routes = [
     BrowserPageComponent,
     PeoplePageComponent,
     PlaylistTableComponent,
-    CreatePlayListComponent
+    CreatePlayListComponent,
+    AddToPlayListComponent,
+    PlayYourPlayListComponent
   ],
   imports: [
     BrowserModule,

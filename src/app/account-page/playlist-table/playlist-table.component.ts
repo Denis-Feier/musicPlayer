@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PlayListService} from '../../services/play-list.service';
 import {AuthService} from '../../services/auth.service';
 import {Subscription} from 'rxjs';
@@ -24,7 +24,9 @@ export class PlaylistTableComponent implements OnInit, OnDestroy {
   constructor(private afs: AngularFirestore,
               private activatedRoute: ActivatedRoute,
               private playListService: PlayListService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private router: Router
+  ) { }
 
   ngOnInit() {
     this.uid = this.activatedRoute.snapshot.params.uid;
@@ -45,5 +47,10 @@ export class PlaylistTableComponent implements OnInit, OnDestroy {
 
   onDelete(playLists: { owner: string; privatePolicy: boolean; description: string; pid: string; title: string }) {
     this.playListService.deletePlayList(playLists.pid, this.currentUser.uid);
+  }
+
+  playThisPlayList(playList: PlayList) {
+    console.log(playList);
+    this.router.navigate(['/account', this.uid, 'play', playList.pid]);
   }
 }

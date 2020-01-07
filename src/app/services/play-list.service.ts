@@ -5,6 +5,8 @@ import {PlayList} from '../shared/playList.model';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {map, switchMap} from 'rxjs/operators';
 import {pipe} from 'rxjs';
+import {PlayListToSong} from '../shared/playListToSong.model';
+import {Song} from '../shared/song.model';
 
 @Injectable()
 export class PlayListService {
@@ -37,6 +39,48 @@ export class PlayListService {
           )
       )
     ));
+  }
+
+  getSongFromPlayList(pid: string) {
+    const pipe1 = this.afs.collection('playListToSong', ref => ref.where('pid', '==', pid))
+      .snapshotChanges()
+      .pipe(
+        map(docRef => docRef.map(d => {
+          const data = d.payload.doc.data() as PlayListToSong;
+          const id = d.payload.doc.id;
+          return {id, ...data};
+        })),
+        map(value => value.map(c => c.sid)),
+      );
+
+    return pipe1.pipe(sidFromPlayList => sidFromPlayList.pipe(
+      switchMap(v =>
+        this.afs.collection('songs', ref => ref.where('sid', 'in', v))
+          .snapshotChanges()
+          .pipe(
+            map(playListRef => playListRef.map(
+              d => {
+                const data = d.payload.doc.data() as Song;
+                const sid = d.payload.doc.id;
+                return {sid, ...data};
+              }
+            ))
+          )
+      )
+    ));
+  }
+
+  addSongToPlayList(pid: string, sid: string){
+    const newPlayListToSong: PlayListToSong = {
+      pid: pid,
+      sid: sid
+    };
+    this.afs.collection<PlayListToSong>('playListToSong').add(newPlayListToSong).then(
+      ref => {
+        const id = ref.id;
+        ref.update({id:id});
+      }
+    )
   }
 
   createPlayList(createData:{uid: string, title: string, description: string, privatePolicy: boolean}) {
