@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.css'],
+  providers: [UsersService],
 })
 export class AdminPageComponent implements OnInit, OnDestroy {
 

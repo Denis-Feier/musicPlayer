@@ -15,8 +15,8 @@ export class MusicService {
     this.songs = this.songsCollection.snapshotChanges().pipe(
       map(songs => songs.map( s => {
         const data = s.payload.doc.data() as Song;
-        const id = s.payload.doc.id;
-        return {id, ...data};
+        const sid = s.payload.doc.id;
+        return {sid, ...data};
       })),
     );
   }

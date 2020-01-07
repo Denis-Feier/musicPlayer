@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {Song} from '../shared/song.model';
 import {Injectable} from '@angular/core';
+import {pipe} from 'rxjs';
 
 @Injectable()
 export class UploadMusicService {
@@ -41,7 +42,15 @@ export class UploadMusicService {
   }
 
   private saveFileData(songDB: Song) {
-    console.log(songDB);
-    this.songCollection.add(songDB);
+    this.songCollection.add(songDB).then(ref => {
+      const sid = ref.id;
+      const newSong: Song= {
+        sid: sid,
+        songURL: songDB.songURL,
+        name: songDB.name,
+        artist: songDB.artist,
+      };
+      ref.update(newSong);
+    });
   }
 }

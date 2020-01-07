@@ -1,24 +1,34 @@
 <div class="container emp-profile">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="profile-img">
-          <img class="avatar" src="{{user.photoURL}}" alt=""/>
-          <div class="vl"></div>
-        </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-img">
+        <img class="avatar" src="{{user.photoURL}}" alt=""/>
+        <div class="vl"></div>
       </div>
-      <div class="col-md-5">
-        <div >
-          <h5>
-            {{user.displayName}}
-          </h5>
-          <h6>
-            {{user.email}}
-          </h6>
+    </div>
+    <div class="col-md-5">
+      <div>
+        <h5>
+          {{user.displayName}}
+        </h5>
+        <h6>
+          {{user.email}}
+        </h6>
+        <p></p>
+        <div *ngIf="this.currentUser.uid == this.uid">
+          <div *ngIf="!this.toNewPlayList;else toPlayList">
+            <button class="btn btn-primary" (click)="newPlayList()">New PlayList</button>
+          </div>
+          <ng-template #toPlayList>
+            <div>
+              <button class="btn btn-success" (click)="newPlayList()">Back To PlayLists</button>
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>
-    <div class="row">
+  </div>
 
+  <router-outlet></router-outlet>
 
-    </div>
 </div>

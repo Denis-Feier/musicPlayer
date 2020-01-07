@@ -1,0 +1,37 @@
+<hr>
+<div class="row">
+  <div class="search-bar">
+    <input class="input100" type="text" name="name" placeholder="Search Playlist" [(ngModel)]="searchText">
+  </div>
+  <div class="container">
+    <hr>
+    <div class="list-group">
+      <div *ngFor="let playLists of this.myPlayLists | nameFilter: {title: searchText}; let i=index;">
+        <a
+          class="list-group-item list-group-item-action listItem"
+          [ngClass]="{'privatePlayList': playLists.privatePolicy}"
+          *ngIf="this.uid===this.currentUser.uid || !playLists.privatePolicy"
+        >
+          <div class="list-content">
+          <span class="button-content" *ngIf="this.uid===this.currentUser.uid; else notMayPlayList">
+                <button class="btn btn-primary" style="margin-right: 10px;">Play</button>
+                <button class="btn btn-success">Edit</button>
+                <button class="btn btn-danger" style="margin-left: 10px;" (click)="onDelete(playLists)">Delete</button>
+              </span>
+            <ng-template #notMayPlayList>
+               <span class="button-content">
+                <button class="btn btn-primary" style="margin-left: 10px;">Request Share</button>
+              </span>
+            </ng-template>
+            <strong>Title: </strong><span>{{playLists.title}}</span>
+            <div>
+            <span>
+                <strong>Description: </strong>{{playLists.description}}
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

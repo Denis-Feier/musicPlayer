@@ -9,8 +9,8 @@
       <a class="list-group-item list-group-item-action listItem"
          *ngIf="user.uid !== this.currentUser.uid"
       >
-        <img class="avatar" [src]="user.photoURL">
         <div class="list-content">
+          <img class="avatar" [src]="user.photoURL">
           <strong>ID: </strong><span>{{user.uid}}</span>
           <div>
         <span>

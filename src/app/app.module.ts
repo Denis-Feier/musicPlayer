@@ -26,12 +26,16 @@ import {UploadMusicService} from './services/upload-music.service';
 import { BannedPageComponent } from './banned-page/banned-page.component';
 import { BrowserPageComponent } from './browser-page/browser-page.component';
 import { PeoplePageComponent } from './people-page/people-page.component';
-import {UsersService} from './services/users.service';
 import {MusicService} from './services/music.service';
+import { PlaylistTableComponent } from './account-page/playlist-table/playlist-table.component';
+import { CreatePlayListComponent } from './account-page/create-play-list/create-play-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
-  { path: 'account/:uid', component: AccountPageComponent },
+  { path: 'account/:uid', component: AccountPageComponent, children:[
+      {path: '', component: PlaylistTableComponent},
+      {path: 'create', component: CreatePlayListComponent},
+    ]},
   { path: 'people', component: PeoplePageComponent },
   { path: 'admin', component: AdminPageComponent},
   { path: 'browse', component: BrowserPageComponent}
@@ -48,7 +52,9 @@ const appRoutes: Routes = [
     NameFilterPipe,
     BannedPageComponent,
     BrowserPageComponent,
-    PeoplePageComponent
+    PeoplePageComponent,
+    PlaylistTableComponent,
+    CreatePlayListComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +73,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService, UploadMusicService, UsersService, MusicService],
+  providers: [AuthService, UploadMusicService, MusicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

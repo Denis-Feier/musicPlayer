@@ -26,7 +26,7 @@ body{
 }
 
 .list-group{
-  max-height: 400px;
+  max-height: 260px;
   overflow: auto;
 }
 
@@ -40,6 +40,7 @@ body{
 
 .search-bar {
   text-align: center;
+  margin: auto;
 }
 
 .wrap-input100 {
@@ -55,3 +56,6 @@ body{
   color: #8f8fa1;
 }
 
+.privatePlayList {
+  background-color: cornflowerblue;
+}
