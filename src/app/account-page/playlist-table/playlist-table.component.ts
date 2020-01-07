@@ -14,10 +14,10 @@ import {PlayList} from '../../shared/playList.model';
 })
 export class PlaylistTableComponent implements OnInit, OnDestroy {
 
-  private authServiceSubscription: Subscription;
-  private myPlayListSubscription: Subscription;
-  private currentUser: User;
-  private myPlayLists: { owner: string; privatePolicy: boolean; description: string; pid: string; title: string }[];
+  authServiceSubscription: Subscription;
+  myPlayListSubscription: Subscription;
+  currentUser: User;
+  myPlayLists: { owner: string; privatePolicy: boolean; description: string; pid: string; title: string }[];
   searchText: string;
   uid: string;
 
