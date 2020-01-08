@@ -31,6 +31,7 @@ import { PlaylistTableComponent } from './account-page/playlist-table/playlist-t
 import { CreatePlayListComponent } from './account-page/create-play-list/create-play-list.component';
 import { AddToPlayListComponent } from './browser-page/add-to-play-list/add-to-play-list.component';
 import { PlayYourPlayListComponent } from './account-page/play-your-play-list/play-your-play-list.component';
+import { ShareRequestPageComponent } from './share-request-page/share-request-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminPageComponent},
   { path: 'browse', component: BrowserPageComponent, children:[
       {path: 'addToPlayList/:sid', component: AddToPlayListComponent}
-    ]}
+    ]},
+  {path: 'share', component: ShareRequestPageComponent}
 ];
 
 @NgModule({
@@ -61,7 +63,8 @@ const appRoutes: Routes = [
     PlaylistTableComponent,
     CreatePlayListComponent,
     AddToPlayListComponent,
-    PlayYourPlayListComponent
+    PlayYourPlayListComponent,
+    ShareRequestPageComponent
   ],
   imports: [
     BrowserModule,

@@ -6,11 +6,14 @@ import {AuthService} from '../../services/auth.service';
 import {Subscription} from 'rxjs';
 import {User} from '../../shared/user.model';
 import {PlayList} from '../../shared/playList.model';
+import {ShareRequest} from '../../shared/shareRequest.model';
+import {ShareRequestService} from '../../services/shareRequest.sevice';
 
 @Component({
   selector: 'app-playlist-table',
   templateUrl: './playlist-table.component.html',
-  styleUrls: ['./playlist-table.component.css']
+  styleUrls: ['./playlist-table.component.css'],
+  providers: [ShareRequestService]
 })
 export class PlaylistTableComponent implements OnInit, OnDestroy {
 
@@ -25,7 +28,8 @@ export class PlaylistTableComponent implements OnInit, OnDestroy {
               private activatedRoute: ActivatedRoute,
               private playListService: PlayListService,
               private authService: AuthService,
-              private router: Router
+              private router: Router,
+              private shareRequestService: ShareRequestService,
   ) { }
 
   ngOnInit() {
@@ -52,5 +56,13 @@ export class PlaylistTableComponent implements OnInit, OnDestroy {
   playThisPlayList(playList: PlayList) {
     console.log(playList);
     this.router.navigate(['/account', this.uid, 'play', playList.pid]);
+  }
+
+  shareRequest(playLists: PlayList, currentUser: User) {
+    this.shareRequestService.createShareRequest(
+      currentUser,
+      this.uid,
+      playLists
+    )
   }
 }

@@ -57,5 +57,9 @@ body{
 }
 
 .privatePlayList {
+  background-color: coral;
+}
+
+.sharedPlayList {
   background-color: cornflowerblue;
 }

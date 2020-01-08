@@ -29,6 +29,11 @@
           </div>
           <div
             [routerLinkActive]="'highlight-div'"
+          >
+            <a mat-list-item [routerLink]="['share']">Share</a>
+          </div>
+          <div
+            [routerLinkActive]="'highlight-div'"
             *ngIf="user.role === 'admin'"
           >
             <a mat-list-item [routerLink]="['admin']">Admin</a>

@@ -9,8 +9,8 @@
       <div *ngFor="let playLists of this.myPlayLists | nameFilter: {title: searchText}; let i=index;">
         <a
           class="list-group-item list-group-item-action listItem"
-          [ngClass]="{'privatePlayList': playLists.privatePolicy}"
-          *ngIf="this.uid===this.currentUser.uid || !playLists.privatePolicy"
+          [ngClass]="{'privatePlayList': playLists.privatePolicy, 'sharedPlayList': !playLists.privatePolicy && currentUser.uid !== playLists.owner && this.uid === currentUser.uid}"
+          *ngIf="this.uid===this.currentUser.uid || (!playLists.privatePolicy && this.uid === playLists.owner)"
         >
           <div class="list-content">
           <span class="button-content" *ngIf="this.uid===this.currentUser.uid; else notMayPlayList">
@@ -19,7 +19,7 @@
               </span>
             <ng-template #notMayPlayList>
                <span class="button-content">
-                <button class="btn btn-primary" style="margin-left: 10px;">Request Share</button>
+                <button class="btn btn-primary" style="margin-left: 10px;" (click)="shareRequest(playLists, currentUser)">Request Share</button>
               </span>
             </ng-template>
             <strong>Title: </strong><span>{{playLists.title}}</span>

@@ -1,0 +1,30 @@
+<p>
+  Have request: {{youHaveRequest}}
+</p>
+
+<div class="container">
+  <div class="list-group">
+    <div *ngFor="let request of shareRequests; let i=index;">
+      <a class="list-group-item list-group-item-action listItem"
+      >
+        <div class="list-content">
+          <img class="avatar" [src]="request.whoAsked.photoURL">
+          <div>
+        <span>
+          <strong>Name: </strong>{{request.whoAsked.displayName}}
+        </span>
+            <span class="button-content">
+            <button class="btn btn-primary" style="margin-right: 10px" (click)="acceptRequest(request)"> Accept </button>
+            <button class="btn btn-danger" (click)="rejectRequest(request)"> Reject </button>
+        </span>
+          </div>
+          <span><strong>Email: </strong> {{request.whoAsked.email}}</span>
+          <span>
+          <div> <strong>Name: </strong>{{request.whatName}} </div>
+          <div> <strong>Description: </strong>{{request.whatDescription}} </div>
+        </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

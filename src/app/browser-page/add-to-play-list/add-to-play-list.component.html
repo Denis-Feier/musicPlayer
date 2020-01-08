@@ -12,6 +12,7 @@
           <a
             class="list-group-item list-group-item-action listItem"
             [ngClass]="{'privatePlayList': playLists.privatePolicy}"
+            *ngIf="playLists.owner == currentUser.uid"
           >
             <div class="list-content">
           <span class="button-content">
