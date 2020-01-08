@@ -21,4 +21,14 @@ export class MusicService {
     );
   }
 
+  getSongByID(sid: string) {
+    return this.afs.doc<Song>(`songs/${sid}`).get().pipe(
+      map(value => {
+        const sid = value.id;
+        const data = value.data() as Song;
+        return {sid, ...data};
+      })
+    );
+  }
+
 }

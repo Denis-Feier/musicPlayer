@@ -5,6 +5,8 @@ import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 import {User} from '../../shared/user.model';
+import {MusicService} from '../../services/music.service';
+import {Song} from '../../shared/song.model';
 
 @Component({
   selector: 'app-add-to-play-list',
@@ -19,32 +21,44 @@ export class AddToPlayListComponent implements OnInit, OnDestroy {
   sid: string;
   authServiceSubscription : Subscription;
   currentUser: User;
-  addInPlayList = new Map();
+  selectedSong: Song;
+  musicServiceSubscription: Subscription;
+  paramsSubscription: Subscription;
+
   constructor(private playListService: PlayListService,
               private activatedRoute: ActivatedRoute,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private musicService: MusicService) { }
 
   ngOnInit() {
-    this.sid = this.activatedRoute.snapshot.params.sid;
-    this.authServiceSubscription = this.authService.user$.subscribe(user => {
-      this.currentUser = user;
-      this.playListService.getMyPlayList(this.currentUser.uid).subscribe(
-        playLists => {
-          this.myPlayLists = playLists;
-          this.myPlayLists.forEach(value => {
-            this.addInPlayList.set(value.pid, 0);
-          })
-        }
-      );
-    })
+    this.paramsSubscription = this.activatedRoute.params.subscribe( params => {
+        this.sid = params['sid'];
+        console.log(this.sid);
+      this.authServiceSubscription = this.authService.user$.subscribe(user => {
+        this.currentUser = user;
+        this.playListService.getMyPlayList(this.currentUser.uid).subscribe(
+          playLists => {
+            this.myPlayLists = playLists;
+          }
+        );
+      });
+
+      this.musicServiceSubscription = this.musicService.getSongByID(this.sid).subscribe(song => {
+        this.selectedSong = song;
+      })
+
+    });
+
+
   }
 
   addToThisPlayList(playLists: PlayList) {
     this.playListService.addSongToPlayList(playLists.pid, this.sid);
-    this.addInPlayList.set(playLists.pid, this.addInPlayList.get(playLists.pid) + 1);
   }
 
   ngOnDestroy(): void {
     this.authServiceSubscription.unsubscribe();
+    this.paramsSubscription.unsubscribe();
+    this.musicServiceSubscription.unsubscribe();
   }
 }
